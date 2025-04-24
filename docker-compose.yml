@@ -24,13 +24,16 @@ services:
             - pgdata:/var/lib/postgresql/data
     
     openresty:
-        image: openresty/openresty:1.27.1.2-0-alpine-fat
+        build: nginx
         container_name: openresty
         env_file: ".env"
         restart: unless-stopped
         volumes: 
             - ./nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
             - ./nginx/jwt.lua:/etc/nginx/lua/jwt.lua:ro
+            - ./nginx/logs:/var/log/nginx/
+        ports: 
+            - 8080:80
         
 
 
