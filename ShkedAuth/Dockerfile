@@ -7,6 +7,7 @@ COPY .mvn .mvn
 RUN chmod +x mvnw
 RUN ./mvnw dependency:resolve
 COPY . .
+RUN chmod +x mvnw
 RUN ./mvnw package -DskipTests
 
 
