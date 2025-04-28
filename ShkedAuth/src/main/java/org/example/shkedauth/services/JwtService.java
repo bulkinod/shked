@@ -29,7 +29,10 @@ public class JwtService {
         String token = Jwts.builder()
                 .setSubject(user.getEmail())
                 .addClaims(Map.of(
-                        "id", user.getId()
+                        "id", user.getId(),
+                        "groupName", user.getGroupName()
+
+
                 ))
                 .setIssuedAt(now)
                 .setExpiration(expiry)
@@ -41,7 +44,7 @@ public class JwtService {
     }
 
     public RefreshToken generateRefreshToken() {
-        long refreshTokenValidityMs = 1;//7 * 24 * 60 * 60 * 1000;
+        long refreshTokenValidityMs = 7 * 24 * 60 * 60 * 1000;
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setToken(UUID.randomUUID().toString());
         refreshToken.setExpiredAt(new Date(System.currentTimeMillis() + refreshTokenValidityMs));

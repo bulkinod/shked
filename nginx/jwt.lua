@@ -35,6 +35,7 @@ if not jwt_obj.verified then
 end
 
 local user_id = jwt_obj.payload.id
+local group_name = jwt_obj.payload.groupName
 
 if not user_id or user_id == "" then
     ngx.log(ngx.ERR, "No 'id' claim in token")
@@ -43,5 +44,15 @@ if not user_id or user_id == "" then
     ngx.exit(401)
 end
 
+if not group_name or group_name == "" then
+    ngx.log(ngx.ERR, "No 'groupName' claim in token")
+    ngx.status = 401
+    ngx.say("No 'groupName' claim in token")
+    ngx.exit(401)
+end
+
 ngx.var.jwt_userid = user_id
+ngx.var.jwt_groupname = group_name
+
+-
 ngx.req.clear_header("Authorization")

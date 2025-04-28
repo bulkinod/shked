@@ -71,7 +71,7 @@ public class GlobalExceptionHandler {
                 ex instanceof ExpiredRefreshTokenException) {
             return HttpStatus.UNAUTHORIZED;
         } else {
-            return HttpStatus.BAD_REQUEST; // На всякий случай fallback
+            return HttpStatus.BAD_REQUEST;
         }
     }
 }
