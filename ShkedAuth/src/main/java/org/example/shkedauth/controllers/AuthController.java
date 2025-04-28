@@ -1,5 +1,6 @@
 package org.example.shkedauth.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.shkedauth.DTOs.AuthDTO;
 import org.example.shkedauth.DTOs.RefreshRequestDTO;
@@ -18,12 +19,12 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public AuthDTO register(@RequestBody SignUpDTO dto) {
+    public AuthDTO register(@RequestBody @Valid SignUpDTO dto) {
         return authService.register(dto);
     }
 
     @PostMapping("/login")
-    public AuthDTO login(@RequestBody SignInDTO dto) {
+    public AuthDTO login(@RequestBody @Valid SignInDTO dto) {
         return authService.login(dto);
     }
 

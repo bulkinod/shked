@@ -35,15 +35,15 @@ public class JwtService {
                 .setExpiration(expiry)
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
-         accessToken.setAccessToken(token);
+         accessToken.setToken(token);
          accessToken.setExpiredAt(now);
          return accessToken;
     }
 
     public RefreshToken generateRefreshToken() {
-        long refreshTokenValidityMs = 7 * 24 * 60 * 60 * 1000;
+        long refreshTokenValidityMs = 1;//7 * 24 * 60 * 60 * 1000;
         RefreshToken refreshToken = new RefreshToken();
-        refreshToken.setAccessToken(UUID.randomUUID().toString());
+        refreshToken.setToken(UUID.randomUUID().toString());
         refreshToken.setExpiredAt(new Date(System.currentTimeMillis() + refreshTokenValidityMs));
         return refreshToken;
     }

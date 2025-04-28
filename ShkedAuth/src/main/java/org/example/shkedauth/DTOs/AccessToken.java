@@ -8,6 +8,6 @@ import java.util.Date;
 @Getter
 @Setter
 public class AccessToken {
-    private String accessToken;
+    private String Token;
     private Date expiredAt;
 }

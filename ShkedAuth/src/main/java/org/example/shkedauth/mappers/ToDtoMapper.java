@@ -6,7 +6,7 @@ import org.example.shkedauth.entities.RefreshTokenEntity;
 public class ToDtoMapper {
     public RefreshToken toDTO(RefreshTokenEntity refreshToken){
         RefreshToken dto = new RefreshToken();
-        dto.setAccessToken(refreshToken.getToken());
+        dto.setToken(refreshToken.getToken());
         dto.setExpiredAt(refreshToken.getExpiryDate());
         return dto;
     }
