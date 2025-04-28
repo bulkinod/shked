@@ -9,8 +9,6 @@ import org.example.shkedtasks.DTOs.TaskDTO;
 import org.example.shkedtasks.DTOs.UpdateTaskDTO;
 import org.example.shkedtasks.services.TaskService;
 import org.springframework.web.bind.annotation.*;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.List;
 
 @RestController

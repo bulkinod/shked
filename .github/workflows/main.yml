@@ -34,3 +34,9 @@ jobs:
           IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}-api:latest
           docker build -t $IMAGE_NAME ./Shked
           docker push $IMAGE_NAME
+
+      - name: Build and push ShkedTasks image
+        run: |
+          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}-tasks:latest
+          docker build -t $IMAGE_NAME ./ShkedTasks
+          docker push $IMAGE_NAME

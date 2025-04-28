@@ -34,6 +34,14 @@ services:
             - ./nginx/logs:/var/log/nginx/
         ports: 
             - 8080:80
+
+    tasks:
+        image: ghcr.io/bulkinod/shked-tasks:latest
+        container_name: tasks
+        env_file: ".env"
+        restart: unless-stopped
+        depends_on:
+            - db
         
 
 
